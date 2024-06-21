@@ -1,7 +1,0 @@
-
-python:S3457"EAdd replacement fields or use a normal string instead of an f-string.(ƒæş†ùÿÿÿÿ8·æóËƒ2J$6316b810-d861-44da-be59-7b779b9461ba
-“python:S116*"PRename this field "SayHello" to match the regular expression ^[_a-z][_a-z0-9]*$.(ë€‚v8¹æóËƒ2J$1a5df70a-f336-4760-81aa-715653fbddcf
-ypython:S11724"/Remove the unused function parameter "request".(ñ’©ıÿÿÿÿ8ºæóËƒ2J$cb77f6cd-50c3-4f45-86dd-8ec01219cd6e
-•python:S1004"LRename method "SayHello" to match the regular expression ^[a-z_][a-z0-9_]*$.(ñ’©ıÿÿÿÿ8»æóËƒ2J$8089dfab-8892-4fb2-be3e-cc4e21c44410
-¨python:S1542;"cRename function "add_GreeterServicer_to_server" to match the regular expression ^[a-z_][a-z0-9_]*$.(µÉÚ¡8¼æóËƒ2J$117fc09f-47e7-41fa-bef7-33de64fedd12
-•python:S100N"LRename method "SayHello" to match the regular expression ^[a-z_][a-z0-9_]*$.(€Èœ¬şÿÿÿÿ8½æóËƒ2J$55c10991-2947-4c1a-83ee-be50a32f1212

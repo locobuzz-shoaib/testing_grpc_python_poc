@@ -1,19 +1,28 @@
-import os
 import glob
+import os
 import subprocess
 
 
 def compile_protos(proto_dir, output_dir):
     proto_files = glob.glob(os.path.join(proto_dir, '*.proto'))
     for proto_file in proto_files:
+        proto_file = os.path.normpath(proto_file)
         command = [
-            'python', '-m', 'grpc_tools.protoc',
-            f'-I{proto_dir}',
-            f'--python_out={output_dir}',
-            f'--grpc_python_out={output_dir}',
+            f"python -m grpc_tools.protoc -I{proto_dir} --python_out={output_dir} --grpc_python_out={output_dir}",
             proto_file
         ]
-        subprocess.run(command, check=True)
+        try:
+            # subprocess.run("python --version", check=True)
+            subprocess.run(command, check=True)
+        except subprocess.CalledProcessError as e:
+            print(f"Error compiling {proto_file}")
+            print(e)
+            print(e.output)
+            raise
+        except Exception as e:
+            print(f"Error compiling {proto_file}")
+            print(e)
+            raise
 
     # Ensure the output directory is a package
     init_file = os.path.join(output_dir, '__init__.py')
@@ -39,7 +48,7 @@ def compile_protos(proto_dir, output_dir):
 
 
 if __name__ == '__main__':
-    proto_dir = './app/grpc/protos'
-    output_dir = './app/grpc/generated'
+    proto_dir = os.path.normpath('/app/grpc/protos')
+    output_dir = os.path.normpath('/app/grpc/generated')
     os.makedirs(output_dir, exist_ok=True)
     compile_protos(proto_dir, output_dir)
