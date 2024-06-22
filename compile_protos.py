@@ -1,23 +1,29 @@
 import glob
 import os
 import subprocess
+import sys
+
+from app.utils.helper_functions import custom_normpath
 
 
 def compile_protos(proto_dir, output_dir):
     proto_files = glob.glob(os.path.join(proto_dir, '*.proto'))
     for proto_file in proto_files:
-        proto_file = os.path.normpath(proto_file)
-        command = [
-            f"python -m grpc_tools.protoc -I{proto_dir} --python_out={output_dir} --grpc_python_out={output_dir}",
+        proto_file = custom_normpath(proto_file)
+        command_list = [
+            f'{sys.executable}', '-m', 'grpc_tools.protoc',
+            f'-I{proto_dir}',
+            f'--python_out={output_dir}',
+            f'--grpc_python_out={output_dir}',
             proto_file
         ]
+
         try:
-            # subprocess.run("python --version", check=True)
-            subprocess.run(command, check=True)
+            subprocess.run(command_list, check=True)
+
         except subprocess.CalledProcessError as e:
             print(f"Error compiling {proto_file}")
             print(e)
-            print(e.output)
             raise
         except Exception as e:
             print(f"Error compiling {proto_file}")
@@ -48,7 +54,14 @@ def compile_protos(proto_dir, output_dir):
 
 
 if __name__ == '__main__':
-    proto_dir = os.path.normpath('/app/grpc/protos')
-    output_dir = os.path.normpath('/app/grpc/generated')
+    # Ensure grpc_tools is installed
+    try:
+        import grpc_tools
+    except ModuleNotFoundError:
+        print("grpc_tools not found. Installing...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "grpcio-tools"])
+
+    proto_dir = 'app/grpc/protos'
+    output_dir = 'app/grpc/generated'
     os.makedirs(output_dir, exist_ok=True)
     compile_protos(proto_dir, output_dir)
