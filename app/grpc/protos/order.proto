@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package order;
+
+// Define the Address message
+message Address {
+  string street = 1;
+  string city = 2;
+  string state = 3;
+  string zip_code = 4;
+  string country = 5;
+}
+
+// Define the Customer message
+message Customer {
+  int32 id = 1;
+  string name = 2;
+  string email = 3;
+  Address address = 4;
+}
+
+// Define the Product message
+message Product {
+  int32 id = 1;
+  string name = 2;
+  string description = 3;
+  double price = 4;
+}
+
+// Define the Item message
+message Item {
+  Product product = 1;
+  int32 quantity = 2;
+}
+
+// Define the Order message
+message Order {
+  int32 id = 1;
+  Customer customer = 2;
+  repeated Item items = 3;
+  double total_amount = 4;
+  Address shipping_address = 5;
+  string status = 6;
+}

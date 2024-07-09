@@ -1,7 +1,6 @@
 from concurrent import futures
 import grpc
-import fibonacci_pb2
-import fibonacci_pb2_grpc
+from app.grpc.generated import fibonacci_pb2_grpc, fibonacci_pb2
 import grpc
 
 from app.grpc.generated import helloworld_pb2_grpc, helloworld_pb2
