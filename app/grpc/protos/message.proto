@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package message;
+
+message UserInfo {
+  string AuthorSocialID = 1;
+  string AuthorName = 2;
+  string Url = 3;
+  string LocationsJson = 4;
+  string Bio = 5;
+  string KnowsAboutJson = 6;
+  string SchoolJson = 7;
+  string WorkJson = 8;
+  string LanguageJson = 9;
+  string PicUrl = 10;
+  string UserTopicJson = 11;
+}
+
+message BrandSettings {
+  // Add fields if needed
+}
+
+message BrandInfo {
+  int32 BrandID = 1;
+  string BrandName = 2;
+  int32 CategoryID = 3;
+  string CategoryName = 4;
+  BrandSettings BrandSettings = 5;
+  string OperationEnum = 6;
+}
+
+message MentionTrackingDetails {
+  string FetchingServiceInTime = 1;
+  string FetchingServiceOutTime = 2;
+}
+
+message RawData {
+  int64  ObjectId = 1;
+  string SocialID = 2;
+  int32 OrderID = 3;
+  string CreatedDate = 4;
+  int32 NumCommentsCount = 5;
+  int32 NumShareCount = 6;
+  int32 NumVideoViews = 7;
+  string Description = 8;
+  string LanguageName = 9;
+  string FilterKeywords = 10;
+  UserInfo UserInfo = 11;
+  string URL = 12;
+  int32 AnswerCounts = 13;
+  string SimplifiedText = 14;
+  int32 NumLikesCount = 15;
+  string PostSocialId = 16;
+}
+
+message Message {
+  RawData RawData = 1;
+  int32 ChannelGroup = 2;
+  int32 ChannelType = 3;
+  BrandInfo BrandInfo = 4;
+  MentionTrackingDetails MentionTrackingDetails = 5;
+  string ServiceName = 6;
+}
+
