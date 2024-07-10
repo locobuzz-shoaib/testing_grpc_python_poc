@@ -1,0 +1,43 @@
+syntax = "proto3";
+package quora_data;
+message TopLevelMessage {
+message RawdataMessage {
+  int64 ObjectId = 1;
+  string SocialID = 2;
+  int32 OrderID = 3;
+  string CreatedDate = 4;
+  int32 NumCommentsCount = 5;
+  int32 NumShareCount = 6;
+  int32 NumVideoViews = 7;
+  string Description = 8;
+  string LanguageName = 9;
+  string FilterKeywords = 10;
+  message UserinfoMessage {
+    string AuthorSocialID = 1;
+  }
+  UserinfoMessage UserInfo = 11;
+  string URL = 12;
+  int32 AnswerCounts = 13;
+  string SimplifiedText = 14;
+}
+RawdataMessage RawData = 1;
+int32 ChannelGroup = 2;
+int32 ChannelType = 3;
+message BrandinfoMessage {
+  int32 BrandID = 1;
+  string BrandName = 2;
+  int32 CategoryID = 3;
+  string CategoryName = 4;
+  message BrandsettingsMessage {
+  }
+  BrandsettingsMessage BrandSettings = 5;
+  string OperationEnum = 6;
+}
+BrandinfoMessage BrandInfo = 4;
+message MentiontrackingdetailsMessage {
+  string FetchingServiceInTime = 1;
+  string FetchingServiceOutTime = 2;
+}
+MentiontrackingdetailsMessage MentionTrackingDetails = 5;
+string ServiceName = 6;
+}
