@@ -63,3 +63,11 @@ order_data = {
     "status": "shipped"
 }
 
+user_data = {
+    "name": "John Doe",
+    "age": 30,
+    "is_active": True,
+    "addresses": [{"street": "1234 Elm St", "city": "Somewhere"}],
+    "hobbies": ["reading", "cycling"]
+}
+

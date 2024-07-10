@@ -1,7 +1,7 @@
 import importlib
 import zlib
 from google.protobuf.descriptor import FieldDescriptor
-from testing_data import order_data, quora_data
+from testing_data import order_data, quora_data, user_data
 import json
 
 
@@ -68,8 +68,8 @@ def deserialize_message(proto_module, message_type, binary_data):
 
 # Example usage:
 # proto_module_name = 'app.grpc.generated.user_pb2'
-proto_module_name = 'app.grpc.generated.message_pb2'
-message_type = 'Message'
+proto_module_name = 'app.grpc.generated.quora_data_pb2'
+message_type = 'TopLevelMessage'
 
 # Load the module dynamically
 proto_module = load_proto_module(proto_module_name)
